@@ -124,6 +124,8 @@ let endToEnd =
                 }
         ]
 
+[<Tests>]
+let all = testList "all" [ frontend; emission; endToEnd ]
+
 [<EntryPoint>]
-let main argv =
-    runTestsWithCLIArgs [] argv (testList "all" [ frontend; emission; endToEnd ])
+let main argv = runTestsWithCLIArgs [] argv all

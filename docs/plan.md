@@ -57,7 +57,7 @@ Each term is compiled to an Inpla term, which stands for the port carrying its v
 7. ✅ Build Inpla (`make -C third_party/inpla`) and get the end-to-end tests green. Generated files end with an explicit `exit;`, because Inpla exits with status 255 at end of input.
 
 ## Verification
-- `dotnet run --project tests/FsToInpla.Tests` covers:
+- `dotnet test` (or `dotnet run --project tests/FsToInpla.Tests`) covers:
   - the front end: `CaseList` from `match`, `if` from `&&`/`not`, error locations, type errors;
   - linear names in every generated rule and in the net;
   - no agent wider than 5 ports;

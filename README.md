@@ -10,7 +10,7 @@ dotnet run --project src/FsToInpla -- examples/fact.fsx            # print the .
 dotnet run --project src/FsToInpla -- examples/fact.fsx -o fact.in
 dotnet run --project src/FsToInpla -- examples/fact.fsx --run      # needs inpla
 dotnet run --project src/FsToInpla -- examples/fact.fsx --dump-core
-dotnet run --project tests/FsToInpla.Tests                         # tests
+dotnet test                                                        # tests
 ```
 
 Inpla is a git submodule. Clone with `git clone --recursive`, or run `git submodule update --init` in an existing clone. Build it with `make -C third_party/inpla`. `--run` looks for Inpla in `$INPLA`, then on `PATH`, then at `third_party/inpla/inpla`.
