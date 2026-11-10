@@ -1,3 +1,4 @@
 [submodule "third_party/inpla"]
 	path = third_party/inpla
 	url = https://github.com/inpla/inpla
+	ignore = dirty

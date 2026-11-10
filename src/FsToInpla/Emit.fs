@@ -20,4 +20,6 @@ let render (o: Output) : string =
     for eq in o.Net do line (printEq eq + ";")
     line ""
     line (root + ";")
+    // Without an explicit exit, inpla exits with status 255 at end of input.
+    line "exit;"
     sb.ToString()

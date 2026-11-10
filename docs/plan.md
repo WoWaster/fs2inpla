@@ -45,7 +45,7 @@ Each term is compiled to an Inpla term, which stands for the port carrying its v
 - **`let rec f … and g …`:**
   - Each function becomes an agent `Fn_f(captured…)` with the rule `Fn_f >< App(a, r)`, which instantiates the body with `a` and connects the result to `r`.
   - Each reference to `f` becomes a fresh `Fn_f(…)`.
-- **Root:** the root is `r ~ ⟦main⟧`, followed by `r;` to print it.
+- **Root:** the root is `r ~ ⟦main⟧`, followed by `r;` to print it and `exit;`.
 
 ## Implementation steps
 1. ✅ Install Inpla (submodule) and check its syntax and limits from the docs and source: `MAX_PORT = 5`, reserved names, attributes and guards.
@@ -54,7 +54,7 @@ Each term is compiled to an Inpla term, which stands for the port carrying its v
 4. ✅ Closure conversion and use analysis.
 5. ✅ NetGen (λ core, ints, `if`, lists, `let rec`, packing) and Emit (with the linearity check).
 6. ✅ CLI (`--run`, `--dump-core`, `--dump-typed`), examples, tests.
-7. ⏳ Build Inpla (`make -C third_party/inpla`) and get the end-to-end tests green.
+7. ✅ Build Inpla (`make -C third_party/inpla`) and get the end-to-end tests green. Generated files end with an explicit `exit;`, because Inpla exits with status 255 at end of input.
 
 ## Verification
 - `dotnet run --project tests/FsToInpla.Tests` covers:

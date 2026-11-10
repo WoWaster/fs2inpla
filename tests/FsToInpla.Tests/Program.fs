@@ -72,6 +72,7 @@ let emission =
                 // Emit.render raises LinearityError if any name does not occur exactly twice.
                 let out = Program.compile (example name)
                 Expect.stringContains out "r;" "prints the root"
+                Expect.isTrue (out.TrimEnd().EndsWith "exit;") "ends with an explicit exit"
             }
         test "agents never exceed 5 ports" {
             let out = Program.compile (example "packing")
