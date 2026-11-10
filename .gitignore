@@ -1,0 +1,17 @@
+# .NET build output
+bin/
+obj/
+*.user
+*.suo
+.vs/
+.idea/
+.vscode/
+TestResults/
+
+# Generated Inpla programs (regenerate with fs2inpla -o)
+*.in
+!third_party/**
+
+# OS / editor noise
+.DS_Store
+*.swp

@@ -1,0 +1,5 @@
+* text=auto eol=lf
+*.fs   text diff=fsharp
+*.fsx  text diff=fsharp
+*.fsproj text
+*.slnx text
