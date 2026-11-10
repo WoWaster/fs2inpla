@@ -6,5 +6,8 @@ let main =
     let d = 4
     let e = 5
     let f = 6
-    let rec go n = if n = 0 then a + b + c + d + e + f else go (n - 1)
+
+    let rec go n =
+        if n = 0 then a + b + c + d + e + f else go (n - 1)
+
     go 3
