@@ -38,5 +38,14 @@ The pipeline is: FCS typed tree (`FSharpExpr`) → `Core` IR (`Frontend.fs`) →
 - **Labelled duplicators.** Static labels without Lamping's oracle can go wrong when a duplicated term duplicates itself with the same label. Types rule out most of these cases, but not all higher-order Church-numeral tricks.
 - **Top-level values are inlined.** Top-level non-function values are substituted at every use, so a value used twice is recomputed. The result is the same, since the code is pure.
 
+## Development
+Code is formatted with [Fantomas](https://fsprojects.github.io/fantomas/), pinned as a local tool in `dotnet-tools.json`. Default settings are used, plus the indentation rules in `.editorconfig`.
+
+```
+dotnet tool restore                                  # once per clone
+dotnet fantomas src tests examples                   # format
+dotnet fantomas --check src tests examples           # verify (non-zero exit if unformatted)
+```
+
 ## License
 MIT. See [LICENSE](LICENSE). Inpla (`third_party/inpla`) is a separate project with its own license.
