@@ -1,5 +1,8 @@
 # fs2inpla — F# to Inpla translator
 
+> [!CAUTION]
+> This is pure Claude-slop code!
+
 Compiles a typed subset of F# into [Inpla](https://github.com/inpla/inpla) interaction nets.
 
 ```
