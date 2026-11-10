@@ -1,0 +1,5 @@
+# Commits listed here are skipped by `git blame` (GitHub honours this file
+# automatically; locally run: git config blame.ignoreRevsFile .git-blame-ignore-revs).
+
+# Format all F# sources with Fantomas
+af1304edf973df90ba2138f9e6d0b6072cbe5164
