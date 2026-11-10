@@ -89,6 +89,26 @@ let emission =
                     Expect.stringContains out "r;" "prints the root"
                     Expect.isTrue (out.TrimEnd().EndsWith "exit;") "ends with an explicit exit"
                 }
+            for (name, _) in examples do
+                test (sprintf "%s matches the published examples/inpla/%s.in" name name) {
+                    // Regenerate with: UPDATE_GOLDEN=1 dotnet test
+                    let golden = Path.Combine(repoRoot, "examples", "inpla", name + ".in")
+                    let out = Program.compile (example name)
+
+                    if Environment.GetEnvironmentVariable "UPDATE_GOLDEN" = "1" then
+                        File.WriteAllText(golden, out)
+                    else
+                        Expect.isTrue (File.Exists golden) (sprintf "missing %s" golden)
+                        Expect.equal (File.ReadAllText golden) out "generated code differs; rerun with UPDATE_GOLDEN=1"
+                }
+            test "every example has an expected result" {
+                let onDisk =
+                    Directory.GetFiles(Path.Combine(repoRoot, "examples"), "*.fsx")
+                    |> Array.map Path.GetFileNameWithoutExtension
+                    |> Set.ofArray
+
+                Expect.equal (examples |> List.map fst |> Set.ofList) onDisk "examples list vs examples/*.fsx"
+            }
             test "agents never exceed 5 ports" {
                 let out = Program.compile (example "packing")
 

@@ -10,6 +10,8 @@ TestResults/
 
 # Generated Inpla programs (regenerate with fs2inpla -o)
 *.in
+# ...except the published translations of the examples (golden files).
+!examples/inpla/*.in
 !third_party/**
 
 # OS / editor noise

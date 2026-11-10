@@ -3,3 +3,4 @@
 *.fsx  text diff=fsharp
 *.fsproj text
 *.slnx text
+examples/inpla/*.in linguist-generated=true

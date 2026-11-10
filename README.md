@@ -17,6 +17,21 @@ Inpla is a git submodule. Clone with `git clone --recursive`, or run `git submod
 
 The design is documented in [docs/plan.md](docs/plan.md) and [docs/decisions.md](docs/decisions.md).
 
+## Examples
+Each `examples/*.fsx` has its translation published in [`examples/inpla/`](examples/inpla). These files run directly in Inpla, e.g. `third_party/inpla/inpla < examples/inpla/fact.in`.
+
+| Example | Inpla result |
+|---|---|
+| [fact](examples/fact.fsx) → [fact.in](examples/inpla/fact.in) | `3628800` |
+| [fib](examples/fib.fsx) → [fib.in](examples/inpla/fib.in) | `6765` |
+| [lists](examples/lists.fsx) → [lists.in](examples/inpla/lists.in) | `385` |
+| [lists2](examples/lists2.fsx) → [lists2.in](examples/inpla/lists2.in) | `[10,8,6,4,2,8,5]` |
+| [mutual](examples/mutual.fsx) → [mutual.in](examples/inpla/mutual.in) | `False` |
+| [lambda](examples/lambda.fsx) → [lambda.in](examples/inpla/lambda.in) | `15` |
+| [packing](examples/packing.fsx) → [packing.in](examples/inpla/packing.in) | `21` |
+
+They are golden files: `dotnet test` fails if the translator's output differs from them. After an intentional change to code generation, regenerate them with `UPDATE_GOLDEN=1 dotnet test` and review the diff.
+
 ## Supported subset
 The program must type-check, and its result is the top-level value `main`. The translator supports:
 - lambdas and application;
